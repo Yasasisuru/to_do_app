@@ -12,9 +12,9 @@ Function(bool?)? onChanged;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(25.0),
+      padding: const EdgeInsets.all(15.0),
       child: Container(
-        padding: EdgeInsets.all(25),
+        padding: EdgeInsets.all(20),
         child: Row(
           children: [
               Checkbox(value: taskComplete, onChanged: onChanged),

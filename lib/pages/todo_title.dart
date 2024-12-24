@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ToDoTitle extends StatelessWidget {
@@ -12,17 +13,21 @@ Function(bool?)? onChanged;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(15.0),
+      padding: const EdgeInsets.only(left: 25,top: 25,right: 25),
       child: Container(
         padding: EdgeInsets.all(20),
-        child: Row(
-          children: [
-              Checkbox(value: taskComplete, onChanged: onChanged),
-            Text(taskName),
-          ],
-        ),
         decoration: BoxDecoration(
             color: Colors.red, borderRadius: BorderRadius.circular(14)),
+        child: Row(
+          children: [
+              Checkbox(value: taskComplete, onChanged: onChanged,
+              activeColor: Colors.black,
+              ),
+            Text(taskName,
+            style: TextStyle(fontSize: 16, color:CupertinoColors.tertiarySystemBackground  ,decoration: taskComplete? TextDecoration.lineThrough: 
+            TextDecoration.none),),
+          ],
+        ),
       ),
     );
   }

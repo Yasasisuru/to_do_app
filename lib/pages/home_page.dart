@@ -20,6 +20,14 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  void createNew() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog();
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,6 +35,10 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text("TO DO"),
         elevation: 3,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: createNew,
+        child: Icon(Icons.add),
       ),
       body: ListView.builder(
         itemCount: toDoList.length,

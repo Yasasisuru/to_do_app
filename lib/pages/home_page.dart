@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_app/pages/dialog_box.dart';
 import '../pages/todo_title.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,8 +12,12 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   //list of to do tasks
   List toDoList = [
-    ["test name", false],
+   
   ];
+
+// text controller
+
+  final Controller = TextEditingController();
 
   void CheckboxChanged(bool? value, int index) {
     setState(() {
@@ -24,8 +29,21 @@ class _HomePageState extends State<HomePage> {
     showDialog(
         context: context,
         builder: (context) {
-          return AlertDialog();
+          return DialogBox(
+            controller: Controller,
+            onSave: saveTask,
+            onCancel: () => Navigator.of(context).pop(),
+          );
         });
+  }
+
+  void saveTask() {
+    setState(() {
+      toDoList.add([Controller.text, false]);
+    Controller.clear();
+    });
+
+    Navigator.of(context).pop();
   }
 
   @override

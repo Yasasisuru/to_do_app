@@ -10,11 +10,14 @@ class DialogBox extends StatelessWidget {
 
    DialogBox({super.key, required this.controller,required this.onCancel,required this.onSave});
 
+
+
+
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
       backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-      content: Container(
+      content: SizedBox(
         height: 80,
         width: double.infinity,
         child: Column(
@@ -27,7 +30,7 @@ class DialogBox extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 button(onPressed: onSave, text: "Save"), // save
-                button(onPressed: onCancel, text: "Cancel"), // save
+                button(onPressed: onCancel, text: "Cancel"), // cancel
               ],
             )
           ],

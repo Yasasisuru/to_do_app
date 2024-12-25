@@ -11,9 +11,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   //list of to do tasks
-  List toDoList = [
-   
-  ];
+  List toDoList = [];
 
 // text controller
 
@@ -32,18 +30,31 @@ class _HomePageState extends State<HomePage> {
           return DialogBox(
             controller: Controller,
             onSave: saveTask,
-            onCancel: () => Navigator.of(context).pop(),
+            onCancel: on_Cancel,
           );
         });
+  }
+
+  void on_Cancel() {
+    setState(() {
+      Controller.clear();
+      Navigator.of(context).pop();
+    });
   }
 
   void saveTask() {
     setState(() {
       toDoList.add([Controller.text, false]);
-    Controller.clear();
+      Controller.clear();
     });
 
     Navigator.of(context).pop();
+  }
+
+  void deletetask(int index) {
+    setState(() {
+      toDoList.remove(index);
+    });
   }
 
   @override
@@ -65,6 +76,7 @@ class _HomePageState extends State<HomePage> {
             taskName: toDoList[index][0],
             taskComplete: toDoList[index][1],
             onChanged: (value) => CheckboxChanged(value, index),
+            //deletefunction:(p0)=>deletetask,
           );
         },
       ),
